@@ -1,0 +1,24 @@
+{
+  "name": "alura-typescript",
+  "version": "1.0.0",
+  "description": "Cursos typescript #1 e #2 da Alura",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "start":"tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maurmann/Alura-Typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maurmann/Alura-Typescript/issues"
+  },
+  "homepage": "https://github.com/maurmann/Alura-Typescript#readme",
+  "devDependencies": {
+    "typescript": "^2.3.2"
+  }
+}
