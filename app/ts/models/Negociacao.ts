@@ -1,11 +1,23 @@
 class Negociacao {
 
     // underline eh uma convenção js para private
-    constructor(private data: Date, private quantidade: number, private valor: number) { }
-
+    constructor(private _data: Date, private _quantidade: number, private _valor: number) { }
    
-    get volume() {
-        return this.quantidade * this.valor;
+
+    get data(){
+        return this._data;
+    }
+
+    get quantidade(){
+        return this._quantidade;
+    }
+
+    get valor(){
+        return this._valor;
+    }
+
+    get volume(){
+        return this._quantidade * this._valor;
     }
 
 }

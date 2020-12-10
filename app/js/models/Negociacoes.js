@@ -7,6 +7,7 @@ class Negociacoes {
         this.negociacoes.push(negociacao);
     }
     paraArray() {
-        return this.negociacoes;
+        // [].concat eh para enviar uma copia e nao a referencia do objeto
+        return [].concat(this.negociacoes);
     }
 }

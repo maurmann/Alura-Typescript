@@ -5,11 +5,14 @@ class NegociacaoController {
     private inputData: HTMLInputElement;
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
+    private negociacoes: Negociacoes = new Negociacoes();
+    private negociacoesView: NegociacoesView = new NegociacoesView('#negociacoesView');
 
     constructor() {
         this.inputData = <HTMLInputElement>document.querySelector('#data');
         this.inputQuantidade = <HTMLInputElement>document.querySelector('#quantidade');
         this.inputValor = <HTMLInputElement>document.querySelector('#valor');
+        this.negociacoesView.update(this.negociacoes);
     }
 
     // Tipo Event sao eventos do js
@@ -23,6 +26,10 @@ class NegociacaoController {
             parseInt(this.inputQuantidade.value),
             parseFloat(this.inputValor.value)
         );
+
+        this.negociacoes.adiciona(negociacao);
+
+        this.negociacoesView.update(this.negociacoes);
 
         console.log(negociacao.volume);
     }

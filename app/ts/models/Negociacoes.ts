@@ -4,11 +4,12 @@ class Negociacoes {
 
     // ou Negociacao[]
 
-    adiciona(negociacao: Negociacao) {
+    adiciona(negociacao: Negociacao):void {
         this.negociacoes.push(negociacao);
     }
 
-    paraArray() {
-        return this.negociacoes;
+    paraArray():Array<Negociacao> {
+        // [].concat eh para enviar uma copia e nao a referencia do objeto
+        return [].concat(this.negociacoes);
     }
 }
