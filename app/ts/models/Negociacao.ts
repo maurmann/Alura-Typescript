@@ -1,4 +1,4 @@
-class Negociacao {
+export class Negociacao {
 
     // underline eh uma convenção js para private
     constructor(private _data: Date, private _quantidade: number, private _valor: number) { }

@@ -1,4 +1,7 @@
-class NegociacaoController {
+import { NegociacoesView, MensagemView } from '../views/index';
+import { Negociacoes, Negociacao } from '../models/index';
+
+export class NegociacaoController {
 
     // Element é um campo html no js
     // HtmlInputElement sao input do html

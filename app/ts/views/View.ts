@@ -1,14 +1,14 @@
-abstract class View<T>{
+export abstract class View<T>{
 
-    protected elemento: Element;
-
-    constructor(seletor: string) {
-        this.elemento = document.querySelector(seletor);
+        protected elemento: Element;
+    
+        constructor(seletor: string) {
+            this.elemento = document.querySelector(seletor);
+        }
+    
+        update(model: T): void {
+            this.elemento.innerHTML = this.template(model);
+        }
+    
+        abstract template(model: T): string;
     }
-
-    update(model: T): void {
-        this.elemento.innerHTML = this.template(model);
-    }
-
-    abstract template(model: T): string;
-}
