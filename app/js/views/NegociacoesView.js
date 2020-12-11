@@ -1,8 +1,4 @@
 class NegociacoesView extends View {
-    update(negociacoes) {
-        this.elemento.innerHTML = this.template(negociacoes);
-    }
-    // crase indica template string 
     template(negociacoes) {
         return `
         <table class="table table-hover table-bordered">
@@ -28,6 +24,5 @@ class NegociacoesView extends View {
             </tfoot>
         </table>
         `;
-        // join para retornar como string e nao como array! ????? 
     }
 }

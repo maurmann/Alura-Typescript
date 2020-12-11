@@ -1,8 +1,4 @@
-class NegociacoesView  extends View {
-
-    update(negociacoes: Negociacoes): void {
-        this.elemento.innerHTML = this.template(negociacoes);
-    }
+class NegociacoesView  extends View<Negociacoes> {
 
     // crase indica template string 
 

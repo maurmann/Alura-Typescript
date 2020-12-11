@@ -1,5 +1,4 @@
 class Negociacao {
-    // underline eh uma convenção js para private
     constructor(_data, _quantidade, _valor) {
         this._data = _data;
         this._quantidade = _quantidade;
