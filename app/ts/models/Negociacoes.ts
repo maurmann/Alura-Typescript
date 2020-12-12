@@ -10,6 +10,7 @@ export class Negociacoes {
 
     paraArray(): Array<Negociacao> {
         // [].concat eh para enviar uma copia e nao a referencia do objeto
-        return [].concat(this.negociacoes);
+
+        return ([] as Negociacao[]).concat(this.negociacoes);
     }
 }

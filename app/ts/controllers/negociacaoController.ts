@@ -21,12 +21,20 @@ export class NegociacaoController {
 
     // Tipo Event sao eventos do js
     adiciona(event: Event) {
+        
         // para que o formulario nao recarregue a pagina
         event.preventDefault();
 
+        var data: Date = new Date(this.inputData.value.replace(/-/g, ','));
+
+        if (!this.EhDiaUtil(data)) {
+            this.mensagemView.update("Negociações somente podem ser cadastradas em dias úteis");
+            return
+        }
+
         // indica para substituir todos '-' por ','. a data é recebida no formato yyyy-mm-dd mas o construtor do date espera 'yyyy,mm,dd'
         const negociacao = new Negociacao(
-            new Date(this.inputData.value.replace(/-/g, ',')),
+            data,
             parseInt(this.inputQuantidade.value),
             parseFloat(this.inputValor.value)
         );
@@ -37,4 +45,23 @@ export class NegociacaoController {
 
         this.mensagemView.update("Negociação adicionada com sucesso!");
     }
+
+    private EhDiaUtil(data: Date) {
+        return (data.getDay() != DiaDaSemana.Sabado && data.getDay() != DiaDaSemana.Domingo);
+    }
+
+}
+
+// no typescript por padrao o enum inicia em 0
+// coindice com os valores de dias da semana do js
+// informei apenas para ficar explicito
+
+enum DiaDaSemana {
+    Domingo = 0,
+    Segunda = 1,
+    Terca = 2,
+    Quarta = 3,
+    Quinta = 4,
+    Sexta = 5,
+    Sabado = 6
 }

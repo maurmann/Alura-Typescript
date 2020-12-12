@@ -6,11 +6,15 @@ System.register([], function (exports_1, context_1) {
         setters: [],
         execute: function () {
             View = class View {
-                constructor(seletor) {
+                constructor(seletor, escapar = false) {
                     this.elemento = document.querySelector(seletor);
+                    this.escapar = escapar;
                 }
                 update(model) {
-                    this.elemento.innerHTML = this.template(model);
+                    var template = this.template(model);
+                    if (this.escapar)
+                        template = template.replace(/<script>[\s\S]*?<\/script>/, '');
+                    this.elemento.innerHTML = template;
                 }
             };
             exports_1("View", View);
