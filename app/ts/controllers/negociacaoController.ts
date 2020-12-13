@@ -45,6 +45,19 @@ export class NegociacaoController {
 
         this.mensagemView.update("Negociação adicionada com sucesso!");
     }
+    importaDados()
+    {
+        function isOk(res:any){
+            
+        }
+
+
+
+        fetch('http://localhost:8080/dados')
+            .then(res=>res.json())
+            .then()
+    }
+
 
     private EhDiaUtil(data: Date) {
         return (data.getDay() != DiaDaSemana.Sabado && data.getDay() != DiaDaSemana.Domingo);

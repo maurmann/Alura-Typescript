@@ -6,3 +6,5 @@ const controller = new NegociacaoController();
     .addEventListener('submit', controller.adiciona.bind(controller));
 
 
+(document.querySelector("#botao_importa") as Element)
+    .addEventListener('click',controller.importaDados.bind(controller));
