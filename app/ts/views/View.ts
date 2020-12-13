@@ -1,8 +1,10 @@
+import { logarTempoDeExecucao } from '../helpers/decorators/index';
+
 export abstract class View<T>{
 
     protected elemento: Element;
     private escapar: boolean;
-
+   
 
     // parametro opcional termina com ?
     // outra forma é informar o valor padrao para o parametro caso nao informado
@@ -15,6 +17,7 @@ export abstract class View<T>{
         this.escapar = escapar;
     }
 
+    @logarTempoDeExecucao()
     update(model: T): void {
 
         var template: string = this.template(model);
