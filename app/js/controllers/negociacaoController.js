@@ -35,7 +35,11 @@ System.register(["../views/index", "../models/index"], function (exports_1, cont
                     this.mensagemView.update("Negociação adicionada com sucesso!");
                 }
                 importaDados() {
-                    alert('importaDados');
+                    function isOk(res) {
+                    }
+                    fetch('http://localhost:8080/dados')
+                        .then(res => res.json())
+                        .then();
                 }
                 EhDiaUtil(data) {
                     return (data.getDay() != DiaDaSemana.Sabado && data.getDay() != DiaDaSemana.Domingo);
