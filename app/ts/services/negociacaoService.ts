@@ -11,10 +11,16 @@ export class NegociacaoService {
 
 
     async obterNegociacoes(handler: ResponseHandler): Promise<Negociacao[]> {
-        const result = await fetch('http://localhost:8080/dados');
-        const response = handler(result);
-        const dados: NegociacaoParcial[] = await response.json();
-        return dados.map(dado => new Negociacao(new Date(), dado.vezes, dado.montante));
+        try {
+            const result = await fetch('http://localhost:8080/dados');
+            const response = handler(result);
+            const dados: NegociacaoParcial[] = await response.json();
+            return dados.map(dado => new Negociacao(new Date(), dado.vezes, dado.montante));
+        }
+        catch (err) {
+            // tratar ou retornar 
+            throw new Error('Não foi possível obter negociações');
+        }
     };
 
 

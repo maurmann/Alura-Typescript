@@ -20,10 +20,15 @@ System.register(["../models/index"], function (exports_1, context_1) {
             NegociacaoService = class NegociacaoService {
                 obterNegociacoes(handler) {
                     return __awaiter(this, void 0, void 0, function* () {
-                        const result = yield fetch('http://localhost:8080/dados');
-                        const response = handler(result);
-                        const dados = yield response.json();
-                        return dados.map(dado => new index_1.Negociacao(new Date(), dado.vezes, dado.montante));
+                        try {
+                            const result = yield fetch('http://localhost:8080/dados');
+                            const response = handler(result);
+                            const dados = yield response.json();
+                            return dados.map(dado => new index_1.Negociacao(new Date(), dado.vezes, dado.montante));
+                        }
+                        catch (err) {
+                            throw new Error('Não foi possível obter negociações');
+                        }
                     });
                 }
                 ;
