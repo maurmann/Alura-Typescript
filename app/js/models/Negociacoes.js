@@ -9,6 +9,9 @@ System.register([], function (exports_1, context_1) {
                 constructor() {
                     this.negociacoes = [];
                 }
+                paraTexto() {
+                    console.log(`Negociacao: ${JSON.stringify(this.negociacoes)}`);
+                }
                 adiciona(negociacao) {
                     this.negociacoes.push(negociacao);
                 }

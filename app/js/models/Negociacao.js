@@ -11,6 +11,9 @@ System.register([], function (exports_1, context_1) {
                     this.quantidade = quantidade;
                     this.valor = valor;
                 }
+                paraTexto() {
+                    console.log(`Data:${this.data} Quantidade:${this.quantidade} Valor:${this.valor}`);
+                }
                 get volume() {
                     return this.quantidade * this.valor;
                 }

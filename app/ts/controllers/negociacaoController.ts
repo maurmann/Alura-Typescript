@@ -1,5 +1,8 @@
 import { NegociacoesView, MensagemView } from '../views/index';
-import { Negociacoes, Negociacao } from '../models/index';
+import { Negociacoes, Negociacao, NegociacaoParcial } from '../models/index';
+import { throttle } from '../helpers/decorators/index';
+import { NegociacaoService, ResponseHandler } from '../services/negociacaoService';
+import { imprime } from '../helpers/Imprime';
 
 export class NegociacaoController {
 
@@ -11,6 +14,7 @@ export class NegociacaoController {
     private negociacoes: Negociacoes = new Negociacoes();
     private negociacoesView: NegociacoesView = new NegociacoesView('#negociacoesView');
     private mensagemView: MensagemView = new MensagemView("#mensagemView");
+    private service: NegociacaoService = new NegociacaoService();
 
     constructor() {
         this.inputData = <HTMLInputElement>document.querySelector('#data');
@@ -21,7 +25,7 @@ export class NegociacaoController {
 
     // Tipo Event sao eventos do js
     adiciona(event: Event) {
-        
+
         // para que o formulario nao recarregue a pagina
         event.preventDefault();
 
@@ -41,21 +45,29 @@ export class NegociacaoController {
 
         this.negociacoes.adiciona(negociacao);
 
+        imprime(negociacao,this.negociacoes);
+
+
         this.negociacoesView.update(this.negociacoes);
 
         this.mensagemView.update("Negociação adicionada com sucesso!");
     }
-    importaDados()
-    {
-        function isOk(res:any){
-            
+
+    @throttle(500)
+    importarDados() {
+
+        const isOk: ResponseHandler = (res: Response) => {
+            if (res.ok) return res;
+            throw new Error(res.statusText);
         }
 
+        this.service
+            .obterNegociacoes(isOk)
+            .then(negociacoes => {
+                negociacoes.forEach(negociacao => this.negociacoes.adiciona(negociacao));
+                this.negociacoesView.update(this.negociacoes);
+            });
 
-
-        fetch('http://localhost:8080/dados')
-            .then(res=>res.json())
-            .then()
     }
 
 

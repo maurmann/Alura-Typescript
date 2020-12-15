@@ -7,4 +7,4 @@ const controller = new NegociacaoController();
 
 
 (document.querySelector("#botao_importa") as Element)
-    .addEventListener('click',controller.importaDados.bind(controller));
+    .addEventListener('click',controller.importarDados.bind(controller));

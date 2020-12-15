@@ -13,7 +13,7 @@ System.register(["./controllers/negociacaoController"], function (exports_1, con
             document.querySelector('.form')
                 .addEventListener('submit', controller.adiciona.bind(controller));
             document.querySelector("#botao_importa")
-                .addEventListener('click', controller.importaDados.bind(controller));
+                .addEventListener('click', controller.importarDados.bind(controller));
         }
     };
 });
